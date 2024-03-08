@@ -1,0 +1,8 @@
+2024-03-08 19:50:46,787 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-08 19:50:46,788 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-03-08 19:51:02,902 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-08 19:51:02,902 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-03-08 19:59:10,159 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-08 19:59:10,159 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-03-08 20:05:12,307 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-08 20:05:12,307 - happy_face_logger - INFO - [Main] App disabled successfully
