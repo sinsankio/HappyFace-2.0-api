@@ -4,24 +4,29 @@ import uuid
 from fastapi.encoders import jsonable_encoder
 from varname import nameof
 
-from entity.emotion import Emotion
-from entity.models import Message, Consultancy
-from entity.models import Organization, WorkEmotionEntry, AuthOrganization, BasicRememberMe
-from helper.chat.custom_assistant_response import CustomAssistantResponse
-from helper.chat.openai.openai_chat_helper import OpenAiChatHelper
+from entity.emotion import EmotionExpression
+from entity.models import EmotionistantConsultancy
+from entity.models import Message
+from entity.models import (
+    Organization, FacialWorkEmotionEntry, AuthOrganization, BasicRememberMe, SpecialConsiderationRequestEntry
+)
+from helper.api.subject_api_helper import SubjectApiHelper
 from helper.database.mongodb.db_helper import DbHelper
 from helper.datetime.date_time_helper import DateTimeHelper
 from helper.hash.hash_helper import HashHelper
+from service.subject_service import SubjectService
 
 
 class OrganizationService:
-    def authenticate(self, db_helper: DbHelper, organization: AuthOrganization) -> dict | None:
+    @staticmethod
+    def authenticate(db_helper: DbHelper, organization: AuthOrganization) -> dict | None:
         if auth_organization := db_helper.find_one(
                 {"orgKey": organization.org_key, "password": organization.password}, {}, collection="organizations"
         ):
             return auth_organization
 
-    def register(self, db_helper: DbHelper, organization: Organization) -> dict:
+    @staticmethod
+    def register(db_helper: DbHelper, organization: Organization) -> dict:
         organization_key = organization.org_key
         organization.org_key = HashHelper.hash(organization.org_key)
         organization.password = HashHelper.hash(organization.password)
@@ -36,7 +41,8 @@ class OrganizationService:
         registered_organization["orgKey"] = organization_key
         return registered_organization
 
-    def retrieve_all(self, db_helper: DbHelper) -> list[dict]:
+    @staticmethod
+    def retrieve_all(db_helper: DbHelper) -> list[dict]:
         projection = {
             "name": True,
             "address": True,
@@ -61,7 +67,7 @@ class OrganizationService:
             for subject in subjects:
                 work_emotions = subject["workEmotions"]
                 subject_happy_engagement = sum(
-                    work_emotion["emotion"] == Emotion.HAPPY.value
+                    work_emotion["expression"] == EmotionExpression.HAPPY.value
                     for work_emotion in work_emotions
                 )
                 if work_emotions:
@@ -77,7 +83,8 @@ class OrganizationService:
             organizations = sorted(organizations, key=lambda org: org["happyEngagement"], reverse=True)
         return organizations
 
-    def update(self, db_helper: DbHelper, organization: dict, new_organization: Organization | dict,
+    @staticmethod
+    def update(db_helper: DbHelper, organization: dict, new_organization: Organization | dict,
                hashing=True) -> dict:
         new_jsonable_organization = jsonable_encoder(new_organization)
         new_jsonable_organization["_id"] = organization["_id"]
@@ -94,11 +101,87 @@ class OrganizationService:
                                                 collection="organizations"):
             return organization
 
-    def delete(self, db_helper: DbHelper, organization: dict) -> bool:
+    @staticmethod
+    def delete(db_helper: DbHelper, organization: dict) -> bool:
         if deletion := db_helper.delete_one({"_id": organization["_id"]}, collection="organizations"):
             return deletion.deleted_count >= 1
 
-    def retrieve_emotion_engagement(self, db_helper: DbHelper, org_id: str, **kwargs) -> dict | None:
+    def insert_facial_work_emotion_entries(self, db_helper: DbHelper, org_key: str,
+                                           facial_work_emotion_entries: list[FacialWorkEmotionEntry]) -> dict | None:
+        if organization := db_helper.find_one({"orgKey": org_key}, {}, collection="organizations"):
+            old_organization = copy.copy(organization)
+            subjects = organization["subjects"]
+            face_snap_dir_subjects = {}
+
+            for subject in subjects:
+                face_snap_dir_subjects[subject["faceSnapDirURI"]] = subject
+
+            for entry in facial_work_emotion_entries:
+                if subject := face_snap_dir_subjects[entry.face_snap_dir_uri]:
+                    subject["workEmotions"].extend(jsonable_encoder(entry.work_emotions))
+
+            if organization := self.update(db_helper, old_organization, organization, hashing=False):
+                return organization
+
+    def insert_sentimental_work_emotion_entries(self, db_helper: DbHelper, org_key: str,
+                                                sentimental_work_emotion_entries: list[dict]) \
+            -> dict | None:
+        if organization := db_helper.find_one({"orgKey": org_key}, {}, collection="organizations"):
+            old_organization = copy.copy(organization)
+            subjects = organization["subjects"]
+            id_subjects = {}
+
+            for subject in subjects:
+                id_subjects[subject["_id"]] = subject
+
+            for entry in sentimental_work_emotion_entries:
+                if subject := id_subjects[entry["subjectId"]]:
+                    new_work_emotions = jsonable_encoder(entry["workEmotions"])
+                    subject["workEmotions"].extend(new_work_emotions)
+                    for we in new_work_emotions:
+                        if "specialConsiderationMessage" in we:
+                            subject["specialConsiderationRequests"].append({
+                                "message": we["specialConsiderationMessage"],
+                                "requestedOn": we["recordedOn"],
+                                "response": None
+                            })
+
+            if organization := self.update(db_helper, old_organization, organization, hashing=False):
+                return organization
+
+    @staticmethod
+    def init_consultancy_services_on_latest_work_emotion_entries(db_helper: DbHelper, org_key: str) -> bool | None:
+        if organization := db_helper.find_one({"orgKey": org_key}, {}, collection="organizations"):
+            old_organization = copy.copy(organization)
+            subjects = organization["subjects"]
+            for subject in subjects:
+                bio_data_profile = SubjectService.get_bio_data_profile(subject)
+                bio_data_profile_summary = SubjectService.get_profile_summary(bio_data_profile)
+                if emotion_engagement_profile := SubjectService.get_emotion_engagement_profile(
+                        subject["workEmotions"]):
+                    emotion_engagement_profile_summary = SubjectService.get_profile_summary(
+                        emotion_engagement_profile)
+                else:
+                    emotion_engagement_profile_summary = "No emotion engagement profile available"
+                if consultation := SubjectApiHelper.get_init_consultancy(
+                        bio_data_profile_summary,
+                        emotion_engagement_profile_summary
+                ):
+                    message = Message(body=consultation)
+                    consultancy = EmotionistantConsultancy(_id=str(uuid.uuid4()), chat=[message])
+                    consultancy = jsonable_encoder(consultancy)
+                    subject["consultancies"].append(consultancy)
+            if organization := OrganizationService.update(db_helper, old_organization, organization, hashing=False):
+                return organization
+
+    @staticmethod
+    def remember_me(db_helper: DbHelper, remember_me: BasicRememberMe) -> dict | None:
+        if organization := db_helper.find_one({"authKey": remember_me.auth_key}, {},
+                                              collection="organizations"):
+            return organization
+
+    @staticmethod
+    def retrieve_emotion_engagement(db_helper: DbHelper, org_id: str, **kwargs) -> dict | None:
         hours = weeks = months = years = 0
 
         if kwargs[nameof(hours)]:
@@ -110,13 +193,13 @@ class OrganizationService:
         if kwargs[nameof(years)]:
             years = abs(int(kwargs[nameof(years)]))
 
-        if subjects := db_helper.find_one({"_id": org_id}, 
+        if subjects := db_helper.find_one({"_id": org_id},
                                           {"_id": False, "subjects": {"workEmotions": True}},
                                           collection="organizations"):
             subject_work_emotions = subjects["subjects"]
             subtracted_iso_datetime = DateTimeHelper.subtract_iso_datetime(hours, weeks, months, years)
             subtracted_iso_datetime = DateTimeHelper.str_to_iso_datetime(subtracted_iso_datetime)
-            emotion_engagement = {emotion.value: 0 for emotion in Emotion}
+            emotion_engagement = {emotion.value: 0 for emotion in EmotionExpression}
             tot_work_emotions = 0
 
             for subject_work_emotion in subject_work_emotions:
@@ -125,8 +208,8 @@ class OrganizationService:
                 for work_emotion in work_emotions:
                     recorded_on = DateTimeHelper.str_to_iso_datetime(work_emotion["recordedOn"])
 
-                    if work_emotion["probability"] >= 80 and recorded_on >= subtracted_iso_datetime:
-                        emotion_engagement[work_emotion["emotion"]] += 1
+                    if work_emotion["accuracy"] >= 80 and recorded_on >= subtracted_iso_datetime:
+                        emotion_engagement[work_emotion["expression"]] += 1
                 tot_work_emotions += len(work_emotions)
 
             if tot_work_emotions > 0:
@@ -135,80 +218,42 @@ class OrganizationService:
                     for key, value in emotion_engagement.items()
                 }
 
-    def insert_work_emotion_entries(self, db_helper: DbHelper, org_key: str,
-                                    work_emotion_entries: list[WorkEmotionEntry]) -> dict | None:
-        if organization := db_helper.find_one({"orgKey": org_key}, {}, collection="organizations"):
-            old_organization = copy.copy(organization)
-            subjects = organization["subjects"]
+    @staticmethod
+    def retrieve_unresponded_special_consideration_requests(organization: dict) -> list:
+        unresponded_requests = []
+        for subject in organization["subjects"]:
+            for request in subject["specialConsiderationRequests"]:
+                if not request["response"]:
+                    special_consideration_request_entry = SpecialConsiderationRequestEntry(
+                        subjectId=subject["_id"],
+                        requestId=request["_id"],
+                        subjectName=subject["name"],
+                        message=request["message"]
+                    )
+                    unresponded_requests.append(special_consideration_request_entry)
+        return unresponded_requests
 
-            for work_emotion_entry in work_emotion_entries:
-                face_snap_dir_uri = work_emotion_entry.face_snap_dir_uri
+    @staticmethod
+    def write_response_for_special_consideration_requests(db_helper: DbHelper, organization: dict,
+                                                          special_consideration_responses: list) -> dict:
+        old_organization = copy.copy(organization)
+        id_subject_sc_requests = {}
+        for subject in organization["subjects"]:
+            subject_id = subject["_id"]
+            id_subject_sc_requests[subject_id] = {"subject": subject, "sc_requests": []}
+            for request in subject["specialConsiderationRequests"]:
+                if request["response"] is None:
+                    id_subject_sc_requests[subject_id]["sc_requests"].append(request)
 
-                for subject in subjects:
-                    if subject["faceSnapDirURI"] == face_snap_dir_uri:
-                        subject["workEmotions"].extend(jsonable_encoder(work_emotion_entry.work_emotions))
-                        break
+        for response in special_consideration_responses:
+            response = jsonable_encoder(response)
+            response_subject_id = response["subjectId"]
+            if response_subject_id in id_subject_sc_requests:
+                id_subject_sc_request = id_subject_sc_requests[response_subject_id]
+                for request in id_subject_sc_request["sc_requests"]:
+                    if request["_id"] == response["requestId"]:
+                        request["response"] = response["message"]
+                        request["respondedOn"] = response["respondedOn"]
 
-            if organization := self.update(db_helper, old_organization, organization, hashing=False):
-                return organization
-
-    def init_consultancy_services_on_work_emotion_entry_submission(self, db_helper: DbHelper, org_key: str,
-                                                                   work_emotion_entries: list[WorkEmotionEntry]) -> bool | None:
-        if organization := db_helper.find_one({"orgKey": org_key}, {}, collection="organizations"):
-            old_organization = copy.copy(organization)
-            subjects = organization["subjects"]
-
-            for work_emotion_entry in work_emotion_entries:
-                face_snap_dir_uri = work_emotion_entry.face_snap_dir_uri
-
-                for subject in subjects:
-                    if subject["faceSnapDirURI"] == face_snap_dir_uri:
-                        subject_id = subject["_id"]
-                        subject_work_emotion_entry_tally_count = {subject_id: {}}
-
-                        for work_emotion in work_emotion_entry.work_emotions:
-                            if work_emotion.probability >= 80:
-                                emotion = work_emotion.emotion.value
-
-                                if emotion in subject_work_emotion_entry_tally_count[subject_id]:
-                                    subject_work_emotion_entry_tally_count[subject_id][emotion] += 1
-                                else:
-                                    subject_work_emotion_entry_tally_count[subject_id][emotion] = 0
-
-                        if work_emotion_tally_count := subject_work_emotion_entry_tally_count[subject_id]:
-                            most_engaging_emotion = max(work_emotion_tally_count,
-                                                        key=lambda e: work_emotion_tally_count[e]).upper()
-                            init_message_content_to_assistant = OpenAiChatHelper.INIT_PROMPT.format(
-                                subject["name"], subject["address"], subject["gender"], str(subject["hiddenDiseases"]),
-                                subject["salary"], subject["family"]["numMembers"],
-                                subject["family"]["monthlyCummIncome"],
-                                subject["family"]["monthlyCummExpenses"], subject["family"]["numOccupations"],
-                                subject["family"]["category"], most_engaging_emotion
-                            )
-                            consultancy_id = str(uuid.uuid4())
-                            init_message_to_assistant = [
-                                {
-                                    "role": "user",
-                                    "content": init_message_content_to_assistant
-                                }
-                            ]
-                            assistant_response = (OpenAiChatHelper.get_assistant_response(
-                                conversation=init_message_to_assistant) or
-                                CustomAssistantResponse.RESPONSE_ON_COMPLETION_FAILURE.value)
-                            message = Message(
-                                body=assistant_response
-                            )
-                            consultancy = Consultancy(_id=consultancy_id,
-                                                      expressionCaused=Emotion[most_engaging_emotion],
-                                                      chat=[message])
-                            consultancy = jsonable_encoder(consultancy)
-                            subject["consultancies"].append(consultancy)
-                            break
-
-            if _ := self.update(db_helper, old_organization, organization, hashing=False):
-                return True
-
-    def remember_me(self, db_helper: DbHelper, remember_me: BasicRememberMe) -> dict | None:
-        if organization := db_helper.find_one({"authKey": remember_me.auth_key}, {}, 
-                                              collection="organizations"):
+        if organization := OrganizationService.update(db_helper, old_organization, organization, hashing=False):
             return organization

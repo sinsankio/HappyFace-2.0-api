@@ -6,13 +6,15 @@ from helper.hash.hash_helper import HashHelper
 
 
 class AdminService:
-    def authenticate(self, db_helper: DbHelper, admin: AuthAdmin) -> dict | None:
+    @staticmethod
+    def authenticate(db_helper: DbHelper, admin: AuthAdmin) -> dict | None:
         if auth_admin := db_helper.find_one(
                 {"username": admin.username, "password": admin.password}, {}
         ):
             return auth_admin
 
-    def update(self, db_helper: DbHelper, admin: dict, new_admin: Admin, hashing: bool = True) -> dict:
+    @staticmethod
+    def update(db_helper: DbHelper, admin: dict, new_admin: Admin, hashing: bool = True) -> dict:
         new_jsonable_admin = jsonable_encoder(new_admin)
         new_jsonable_admin["_id"] = admin["_id"]
 
@@ -27,6 +29,7 @@ class AdminService:
         if admin := db_helper.update_one({"_id": admin["_id"]}, new_jsonable_admin):
             return admin
 
-    def remember_me(self, db_helper: DbHelper, remember_me: BasicRememberMe) -> dict | None:
+    @staticmethod
+    def remember_me(db_helper: DbHelper, remember_me: BasicRememberMe) -> dict | None:
         if admin := db_helper.find_one({"authKey": remember_me.auth_key}, {}):
             return admin

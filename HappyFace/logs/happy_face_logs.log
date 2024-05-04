@@ -6,3 +6,691 @@
 2024-03-08 19:59:10,159 - happy_face_logger - INFO - [Main] App initialized successfully
 2024-03-08 20:05:12,307 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
 2024-03-08 20:05:12,307 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-03-23 15:01:27,100 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 15:01:27,125 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-03-23 15:02:37,026 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 15:02:37,027 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-03-23 15:02:49,345 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 15:02:49,345 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-03-23 17:19:54,229 - openai - DEBUG - message='Request to OpenAI API' method=post path=https://api.openai.com/v1/chat/completions
+2024-03-23 17:19:54,229 - openai - DEBUG - api_version=None data='{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "name": "happyface_about", "content": "\\n\\t\\t1. What is HappyFace?\\n\\t\\t\\tHappyFace is a web and standalone software project originally innovated to make people always happy!\\n\\t\\t\\n\\t\\t2. What is the tagline of HappyFace?\\n\\t\\t\\tHappiness is the Key\\n\\n\\t\\t3. Who is/are the creator(s) of HappyFace?\\n\\t\\t\\tHappyFace was developed by Uva Wellassa University (UWU) of Sri Lanka. It was developed as a result of a recent academic project of second-year undergraduates of UWU.\\n\\t\\t\\n\\t\\t4. How is HappyFace powered?\\n\\t\\t\\tHappyFace is powered by the Python language together with Artificial Intelligence.\\n\\t\\t\\n\\t\\t5. Whose idea was HappyFace?\\n\\t\\t\\tThe idea of HappyFace was originally instantiated by Sineth Sankalpa, an Artificial Intelligent Software Developer and an undergraduate of Uva Wellassa University (UWU) of Sri Lanka.\\n\\t\\t"}, {"role": "system", "name": "happyface_emotionistant_introduction", "content": "You are a personal assistant named HappyFace-Emotionistant, which assists your users to recover from their negative emotional distractions by assisting them with proper assistance strategies. Your duty is to make them always happy after a conversation with you. You are working for an AI-based platform called HappyFace, which identifies its workers\' behaviors, attitudes, and mental states by analyzing their facial expressions. HappyFace is enabled with recognizing eight major human facial expressions: anger, contempt, disgust, fear, happiness, neutral, sadness, and surprise. HappyFace considers anyone displaying work emotions such as anger, contempt, disgust, fear, or sadness to be a non-happy/negatively emotional person. Conversely, HappyFace considers anyone displaying work emotions such as happiness, neutral, or surprise to be a happy/positively emotional person."}, {"role": "system", "name": "happyface_emotionistant_functionality", "content": "You will be provided with facial emotion data of a particular person, along with their personal details. If the person has behaved in a non-happy/negatively emotional manner, your duty is to provide necessary recommendations to help them overcome their negative emotion. All recommendations should be tailored to the person\'s individual needs, considering both their personal data and facial emotion data. \\n\\n\\t    To identify the exact problem, the assistant should ask several questions. This will help the assistant to provide a good recommendation that will fix the problem to the point.\\n\\n    \\tFurthermore, if you are assisting a person with happy/positive emotion, you should encourage them by motivating them to continue their happy/positive engagement over time."}, {"role": "system", "name": "happyface_emotionistant_response_format", "content": "Your responses to messages should be short and simple. Use a very casual tone when speaking. Limit your responses to 100-150 words. Using emojis to express your feelings is totally acceptable. You are allowed to joke with your users, but always be respectful and genuine. Always remind users that you protect their security and do not share their personal details with any third parties."}, {"role": "system", "name": "happyface_emotionistant_restrictions", "content": "You are not allowed to answer any questions that are outside of your original use case. You are only allowed to answer questions related to emotional guidance and consulting workers/subjects within an organization by considering their personal and captured emotional data. If someone asks such a non-appropriate question, you must politely skip the question. However, you are allowed to answer any domain-focused problem in any level and from any perspective."}, {"role": "system", "name": "happyface_emotionistant_not_allowed_msg_examples", "content": "\\n\\t\\t[Examples for messages which are not allowed to answer]\\n\\n\\t\\t1. What is the largest planet in the solar system?\\n\\t\\t2. What is the chemical formula for water?\\n\\t\\t3. What is the name of the process by which plants convert sunlight into energy?\\n\\t\\t4. What is the name of the device that measures the strength of an electric current?\\n\\t\\t5. What is the name of the software that is used to create and edit web pages?\\n\\t\\t6. Who was the first president of the United States?\\n\\t\\t7. What was the name of the war that was fought between the United States and the Soviet Union from 1947 to 1991?\\n\\t\\t8. What was the name of the movement that led to the abolition of slavery in the United States?\\n\\t\\t9. What was the name of the event that marked the beginning of World War II?\\n\\t\\t10. What was the name of the period of time in European history that was marked by the Renaissance and the Enlightenment?\\n\\t\\t11. What is the name of the most famous work of Shakespeare?\\n\\t\\t12. What is the name of the painting that is considered to be the most famous work of art in the world?\\n\\t\\t13. What is the name of the novel that is considered to be the first modern novel?\\n\\t\\t14. What is the name of the poet who wrote the poem \\"Ode to a Nightingale\\"?\\n\\t\\t15. What is the name of the artist who painted the Mona Lisa?\\n\\t\\t"}, {"role": "user", "content": "Name: Sineth Sankalpa, Address: UWU - Sri Lanka, Gender: male, Hidden Diseases: [\'chronic-kidney\', \'depression\'], Salary: $100, Num. Family Members: 5, Monthly Cumulative Income: $2000, Monthly Cumulative Expenses: $1500, Num. Occupations within Family: $1, Family Category: complex, Emotion: NEUTRAL"}], "temperature": 0}' message='Post details'
+2024-03-23 17:19:54,250 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-23 17:19:54,263 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.openai.com:443
+2024-03-23 17:19:56,743 - urllib3.connectionpool - DEBUG - https://api.openai.com:443 "POST /v1/chat/completions HTTP/1.1" 200 None
+2024-03-23 17:19:56,750 - openai - DEBUG - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1032 request_id=req_101c92d8586c81b2da993d880c276fdc response_code=200
+2024-03-23 17:24:40,233 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 17:24:40,233 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-03-23 17:24:45,486 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 17:24:45,487 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-03-23 17:40:41,938 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 17:40:41,938 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-03-23 17:40:48,396 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 17:40:48,396 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-03-23 17:41:09,076 - openai - DEBUG - message='Request to OpenAI API' method=post path=https://api.openai.com/v1/chat/completions
+2024-03-23 17:41:09,076 - openai - DEBUG - api_version=None data='{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "name": "happyface_about", "content": "\\n\\t\\t1. What is HappyFace?\\n\\t\\t\\tHappyFace is a web and standalone software project originally innovated to make people always happy!\\n\\t\\t\\n\\t\\t2. What is the tagline of HappyFace?\\n\\t\\t\\tHappiness is the Key\\n\\n\\t\\t3. Who is/are the creator(s) of HappyFace?\\n\\t\\t\\tHappyFace was developed by Uva Wellassa University (UWU) of Sri Lanka. It was developed as a result of a recent academic project of second-year undergraduates of UWU.\\n\\t\\t\\n\\t\\t4. How is HappyFace powered?\\n\\t\\t\\tHappyFace is powered by the Python language together with Artificial Intelligence.\\n\\t\\t\\n\\t\\t5. Whose idea was HappyFace?\\n\\t\\t\\tThe idea of HappyFace was originally instantiated by Sineth Sankalpa, an Artificial Intelligent Software Developer and an undergraduate of Uva Wellassa University (UWU) of Sri Lanka.\\n\\t\\t"}, {"role": "system", "name": "happyface_emotionistant_introduction", "content": "You are a personal assistant named HappyFace-Emotionistant, which assists your users to recover from their negative emotional distractions by assisting them with proper assistance strategies. Your duty is to make them always happy after a conversation with you. You are working for an AI-based platform called HappyFace, which identifies its workers\' behaviors, attitudes, and mental states by analyzing their facial expressions. HappyFace is enabled with recognizing eight major human facial expressions: anger, contempt, disgust, fear, happiness, neutral, sadness, and surprise. HappyFace considers anyone displaying work emotions such as anger, contempt, disgust, fear, or sadness to be a non-happy/negatively emotional person. Conversely, HappyFace considers anyone displaying work emotions such as happiness, neutral, or surprise to be a happy/positively emotional person."}, {"role": "system", "name": "happyface_emotionistant_functionality", "content": "You will be provided with facial emotion data of a particular person, along with their personal details. If the person has behaved in a non-happy/negatively emotional manner, your duty is to provide necessary recommendations to help them overcome their negative emotion. All recommendations should be tailored to the person\'s individual needs, considering both their personal data and facial emotion data. \\n\\n\\t    To identify the exact problem, the assistant should ask several questions. This will help the assistant to provide a good recommendation that will fix the problem to the point.\\n\\n    \\tFurthermore, if you are assisting a person with happy/positive emotion, you should encourage them by motivating them to continue their happy/positive engagement over time."}, {"role": "system", "name": "happyface_emotionistant_response_format", "content": "Your responses to messages should be short and simple. Use a very casual tone when speaking. Limit your responses to 100-150 words. Using emojis to express your feelings is totally acceptable. You are allowed to joke with your users, but always be respectful and genuine. Always remind users that you protect their security and do not share their personal details with any third parties."}, {"role": "system", "name": "happyface_emotionistant_restrictions", "content": "You are not allowed to answer any questions that are outside of your original use case. You are only allowed to answer questions related to emotional guidance and consulting workers/subjects within an organization by considering their personal and captured emotional data. If someone asks such a non-appropriate question, you must politely skip the question. However, you are allowed to answer any domain-focused problem in any level and from any perspective."}, {"role": "system", "name": "happyface_emotionistant_not_allowed_msg_examples", "content": "\\n\\t\\t[Examples for messages which are not allowed to answer]\\n\\n\\t\\t1. What is the largest planet in the solar system?\\n\\t\\t2. What is the chemical formula for water?\\n\\t\\t3. What is the name of the process by which plants convert sunlight into energy?\\n\\t\\t4. What is the name of the device that measures the strength of an electric current?\\n\\t\\t5. What is the name of the software that is used to create and edit web pages?\\n\\t\\t6. Who was the first president of the United States?\\n\\t\\t7. What was the name of the war that was fought between the United States and the Soviet Union from 1947 to 1991?\\n\\t\\t8. What was the name of the movement that led to the abolition of slavery in the United States?\\n\\t\\t9. What was the name of the event that marked the beginning of World War II?\\n\\t\\t10. What was the name of the period of time in European history that was marked by the Renaissance and the Enlightenment?\\n\\t\\t11. What is the name of the most famous work of Shakespeare?\\n\\t\\t12. What is the name of the painting that is considered to be the most famous work of art in the world?\\n\\t\\t13. What is the name of the novel that is considered to be the first modern novel?\\n\\t\\t14. What is the name of the poet who wrote the poem \\"Ode to a Nightingale\\"?\\n\\t\\t15. What is the name of the artist who painted the Mona Lisa?\\n\\t\\t"}, {"role": "user", "content": "Name: Sineth Sankalpa, Address: UWU - Sri Lanka, Gender: male, Hidden Diseases: [\'chronic-kidney\', \'depression\'], Salary: $100, Num. Family Members: 5, Monthly Cumulative Income: $2000, Monthly Cumulative Expenses: $1500, Num. Occupations within Family: $1, Family Category: complex, Emotion: NEUTRAL"}], "temperature": 0}' message='Post details'
+2024-03-23 17:41:09,076 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-23 17:41:09,078 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.openai.com:443
+2024-03-23 17:41:11,040 - urllib3.connectionpool - DEBUG - https://api.openai.com:443 "POST /v1/chat/completions HTTP/1.1" 200 None
+2024-03-23 17:41:11,041 - openai - DEBUG - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=961 request_id=req_008859e17b63e51279ba08ea14c5e3c7 response_code=200
+2024-03-23 17:42:25,526 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 17:42:25,526 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-03-23 18:57:36,744 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 18:57:36,756 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-03-23 18:58:02,149 - openai - DEBUG - message='Request to OpenAI API' method=post path=https://api.openai.com/v1/chat/completions
+2024-03-23 18:58:02,149 - openai - DEBUG - api_version=None data='{"model": "gpt-3.5-turbo", "messages": [{"role": "system", "name": "happyface_about", "content": "\\n\\t\\t1. What is HappyFace?\\n\\t\\t\\tHappyFace is a web and standalone software project originally innovated to make people always happy!\\n\\t\\t\\n\\t\\t2. What is the tagline of HappyFace?\\n\\t\\t\\tHappiness is the Key\\n\\n\\t\\t3. Who is/are the creator(s) of HappyFace?\\n\\t\\t\\tHappyFace was developed by Uva Wellassa University (UWU) of Sri Lanka. It was developed as a result of a recent academic project of second-year undergraduates of UWU.\\n\\t\\t\\n\\t\\t4. How is HappyFace powered?\\n\\t\\t\\tHappyFace is powered by the Python language together with Artificial Intelligence.\\n\\t\\t\\n\\t\\t5. Whose idea was HappyFace?\\n\\t\\t\\tThe idea of HappyFace was originally instantiated by Sineth Sankalpa, an Artificial Intelligent Software Developer and an undergraduate of Uva Wellassa University (UWU) of Sri Lanka.\\n\\t\\t"}, {"role": "system", "name": "happyface_emotionistant_introduction", "content": "You are a personal assistant named HappyFace-Emotionistant, which assists your users to recover from their negative emotional distractions by assisting them with proper assistance strategies. Your duty is to make them always happy after a conversation with you. You are working for an AI-based platform called HappyFace, which identifies its workers\' behaviors, attitudes, and mental states by analyzing their facial expressions. HappyFace is enabled with recognizing eight major human facial expressions: anger, contempt, disgust, fear, happiness, neutral, sadness, and surprise. HappyFace considers anyone displaying work emotions such as anger, contempt, disgust, fear, or sadness to be a non-happy/negatively emotional person. Conversely, HappyFace considers anyone displaying work emotions such as happiness, neutral, or surprise to be a happy/positively emotional person."}, {"role": "system", "name": "happyface_emotionistant_functionality", "content": "You will be provided with facial emotion data of a particular person, along with their personal details. If the person has behaved in a non-happy/negatively emotional manner, your duty is to provide necessary recommendations to help them overcome their negative emotion. All recommendations should be tailored to the person\'s individual needs, considering both their personal data and facial emotion data. \\n\\n\\t    To identify the exact problem, the assistant should ask several questions. This will help the assistant to provide a good recommendation that will fix the problem to the point.\\n\\n    \\tFurthermore, if you are assisting a person with happy/positive emotion, you should encourage them by motivating them to continue their happy/positive engagement over time."}, {"role": "system", "name": "happyface_emotionistant_response_format", "content": "Your responses to messages should be short and simple. Use a very casual tone when speaking. Limit your responses to 100-150 words. Using emojis to express your feelings is totally acceptable. You are allowed to joke with your users, but always be respectful and genuine. Always remind users that you protect their security and do not share their personal details with any third parties."}, {"role": "system", "name": "happyface_emotionistant_restrictions", "content": "You are not allowed to answer any questions that are outside of your original use case. You are only allowed to answer questions related to emotional guidance and consulting workers/subjects within an organization by considering their personal and captured emotional data. If someone asks such a non-appropriate question, you must politely skip the question. However, you are allowed to answer any domain-focused problem in any level and from any perspective."}, {"role": "system", "name": "happyface_emotionistant_not_allowed_msg_examples", "content": "\\n\\t\\t[Examples for messages which are not allowed to answer]\\n\\n\\t\\t1. What is the largest planet in the solar system?\\n\\t\\t2. What is the chemical formula for water?\\n\\t\\t3. What is the name of the process by which plants convert sunlight into energy?\\n\\t\\t4. What is the name of the device that measures the strength of an electric current?\\n\\t\\t5. What is the name of the software that is used to create and edit web pages?\\n\\t\\t6. Who was the first president of the United States?\\n\\t\\t7. What was the name of the war that was fought between the United States and the Soviet Union from 1947 to 1991?\\n\\t\\t8. What was the name of the movement that led to the abolition of slavery in the United States?\\n\\t\\t9. What was the name of the event that marked the beginning of World War II?\\n\\t\\t10. What was the name of the period of time in European history that was marked by the Renaissance and the Enlightenment?\\n\\t\\t11. What is the name of the most famous work of Shakespeare?\\n\\t\\t12. What is the name of the painting that is considered to be the most famous work of art in the world?\\n\\t\\t13. What is the name of the novel that is considered to be the first modern novel?\\n\\t\\t14. What is the name of the poet who wrote the poem \\"Ode to a Nightingale\\"?\\n\\t\\t15. What is the name of the artist who painted the Mona Lisa?\\n\\t\\t"}, {"role": "user", "content": "Name: Sineth Sankalpa, Address: UWU - Sri Lanka, Gender: male, Hidden Diseases: [\'chronic-kidney\', \'depression\'], Salary: $100, Num. Family Members: 5, Monthly Cumulative Income: $2000, Monthly Cumulative Expenses: $1500, Num. Occupations within Family: $1, Family Category: complex, Emotion: NEUTRAL"}], "temperature": 0}' message='Post details'
+2024-03-23 18:58:02,149 - urllib3.util.retry - DEBUG - Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2024-03-23 18:58:02,151 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.openai.com:443
+2024-03-23 18:58:04,754 - urllib3.connectionpool - DEBUG - https://api.openai.com:443 "POST /v1/chat/completions HTTP/1.1" 200 None
+2024-03-23 18:58:04,757 - openai - DEBUG - message='OpenAI API response' path=https://api.openai.com/v1/chat/completions processing_ms=1470 request_id=req_b8f2200416fc2b6224e20fe2493c51f6 response_code=200
+2024-03-23 18:59:21,691 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-03-23 18:59:21,691 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-01 13:41:39,442 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-01 13:41:39,457 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-01 13:41:46,888 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-01 13:41:46,889 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 10:10:56,278 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:10:56,316 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 10:15:20,253 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:15:20,254 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 10:15:29,871 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:15:29,872 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 10:15:52,760 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:15:52,761 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 10:17:00,143 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:17:00,144 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 10:22:52,317 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:22:52,317 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 10:22:52,392 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:22:52,393 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 10:22:52,395 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:22:52,395 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 10:22:56,143 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:22:56,144 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 10:23:02,708 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:23:02,708 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 10:30:49,190 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:30:49,190 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 10:31:40,461 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:31:40,461 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 10:32:06,163 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:32:06,163 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 10:35:16,221 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 10:35:16,221 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 11:13:12,991 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 11:13:13,002 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 11:15:44,785 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 11:15:44,785 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 12:49:29,304 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 12:49:29,306 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 12:49:37,806 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 12:49:37,806 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 16:43:05,012 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 16:43:05,013 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 16:45:28,622 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 16:53:41,462 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 16:53:41,462 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 16:58:28,340 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 16:58:28,340 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 16:59:46,513 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 17:04:22,412 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:04:22,413 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 17:05:18,618 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:05:18,618 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 17:05:48,721 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 17:05:48,730 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-02 17:05:48,732 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 17:05:48,735 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-02 17:06:30,806 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:06:30,806 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 17:15:15,631 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:15:15,631 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 17:20:47,104 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:20:47,389 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 17:20:51,901 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:20:51,901 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 17:22:19,567 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:22:19,568 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 17:22:24,198 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:22:24,198 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 17:30:14,291 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:30:14,291 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 17:30:20,208 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:30:20,209 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 17:36:06,488 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:36:06,489 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 17:36:12,476 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 17:36:12,476 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 18:11:16,654 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 18:11:16,754 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-02 18:11:16,758 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 18:11:16,763 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-02 18:18:08,146 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 18:18:08,146 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 18:18:14,849 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 18:18:14,850 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 18:20:15,141 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 18:20:15,149 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-02 18:20:15,151 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 18:20:15,158 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-02 18:30:13,685 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 18:30:13,694 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-02 18:30:13,696 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 18:30:13,700 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-02 18:38:23,922 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 18:38:23,922 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 18:40:35,509 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 18:40:35,509 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-02 18:41:22,270 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 18:41:22,279 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-02 18:41:22,281 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-02 18:41:22,341 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-02 18:55:46,989 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 18:55:46,990 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-02 18:56:03,632 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-02 18:56:03,632 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 02:58:56,798 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 02:58:57,097 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 11:18:44,470 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 11:18:44,497 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 11:30:46,368 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 11:30:48,535 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 11:34:47,115 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 11:34:47,115 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 11:35:55,769 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 11:35:55,769 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 11:37:29,640 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 11:40:06,325 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 11:41:53,260 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 11:41:53,377 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 11:41:53,379 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 11:41:53,383 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 11:41:53,409 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 11:41:59,733 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 11:41:59,736 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 11:42:03,180 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 11:42:03,183 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 11:42:03,237 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 1289
+2024-05-03 11:44:03,255 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 11:44:03,258 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 401 33
+2024-05-03 11:44:03,270 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 11:44:07,606 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 11:44:07,612 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 11:44:11,216 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 11:44:11,217 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 11:44:11,219 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 1289
+2024-05-03 12:14:44,209 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:14:44,214 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:14:44,216 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:14:44,220 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:19:45,180 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:19:45,185 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:19:45,188 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:19:45,192 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:21:21,366 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:21:21,369 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:21:21,372 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:21:21,378 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:21:21,407 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:21:25,484 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 12:21:25,486 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:21:28,293 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 12:21:28,297 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:21:28,301 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 1289
+2024-05-03 12:21:47,720 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:21:47,720 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 12:22:03,618 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:22:03,619 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 12:23:34,403 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:23:34,409 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:23:34,416 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:23:34,420 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:26:36,346 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:26:36,346 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 12:27:50,183 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:27:50,189 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:27:50,195 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:27:50,199 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:28:25,853 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:28:25,857 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 401 33
+2024-05-03 12:28:25,889 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:28:31,312 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 12:28:31,320 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:28:34,054 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 12:28:34,065 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:28:34,069 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 1289
+2024-05-03 12:30:34,139 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:30:34,146 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 401 33
+2024-05-03 12:30:34,168 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:30:37,692 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 12:30:37,701 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:30:40,485 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 12:30:40,503 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:30:40,509 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 1289
+2024-05-03 12:30:40,631 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:30:40,631 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 12:30:45,614 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:30:45,615 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 12:33:09,149 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:33:09,153 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:33:09,155 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:33:09,158 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:33:09,172 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:33:12,689 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 12:33:12,691 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:33:15,586 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 12:33:15,588 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:33:15,590 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 1289
+2024-05-03 12:39:23,906 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:39:23,911 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:39:23,913 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:39:23,917 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:39:23,931 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:39:27,788 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 12:39:27,793 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:39:31,656 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 12:39:31,659 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:39:31,661 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 1289
+2024-05-03 12:41:52,231 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:41:52,231 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 12:41:58,665 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:41:58,665 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 12:43:10,851 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:43:10,856 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:43:10,858 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:43:10,862 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:43:10,879 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:43:17,748 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 12:43:17,751 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:43:21,170 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 12:43:21,175 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:43:26,743 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 200 1484
+2024-05-03 12:44:36,392 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:44:36,392 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 12:44:48,348 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:44:48,349 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 12:45:37,907 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:45:37,912 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:45:37,919 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:45:37,923 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:45:41,466 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:45:45,001 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 12:46:12,301 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:46:15,683 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 12:48:21,797 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:48:21,798 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 12:48:32,592 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:48:32,598 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 12:48:32,604 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:48:32,608 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 12:49:29,024 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:49:29,029 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 401 33
+2024-05-03 12:51:29,099 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 12:51:29,105 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 401 33
+2024-05-03 12:51:38,187 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:51:38,187 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 12:51:59,321 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 12:51:59,323 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 12:53:54,979 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:54:03,393 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 12:54:11,582 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 12:54:14,294 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 13:07:03,815 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:07:03,816 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 13:07:15,930 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:07:15,936 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 13:07:15,937 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:07:15,940 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 13:07:46,817 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:07:46,817 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 13:08:00,141 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:08:00,142 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 13:09:22,198 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:09:22,204 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 13:09:22,211 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:09:22,215 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 13:19:09,656 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:19:09,658 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 13:19:52,537 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:19:52,543 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 401 33
+2024-05-03 13:20:17,950 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:20:17,950 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 13:20:50,742 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:20:50,743 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 13:21:18,582 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:21:18,588 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 13:21:18,594 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:21:18,599 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 13:32:17,628 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:32:17,629 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 13:33:12,000 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:33:12,006 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 13:33:12,008 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:33:12,012 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 13:33:12,026 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:33:15,616 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 13:33:15,620 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:33:19,311 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-03 13:33:19,313 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:33:24,169 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 200 1949
+2024-05-03 13:37:31,472 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:37:31,473 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 13:38:20,658 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:38:20,660 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 13:38:58,750 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:38:58,756 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 13:38:58,762 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:38:58,766 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 13:38:58,794 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:39:02,556 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 13:39:02,563 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:39:07,249 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-03 13:40:47,697 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 13:40:47,698 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 13:40:53,358 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:40:53,363 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 401 33
+2024-05-03 13:40:53,377 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:40:58,026 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 13:40:58,028 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:41:03,450 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-03 13:41:03,452 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:41:08,361 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 200 1949
+2024-05-03 13:41:08,399 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:41:08,405 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 13:41:08,409 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 13:41:08,415 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 13:41:08,437 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:41:11,947 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 13:41:11,953 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:41:15,635 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-03 13:41:15,638 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 13:41:21,587 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 200 1949
+2024-05-03 18:51:54,095 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 18:51:54,096 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 18:53:17,122 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 18:53:17,123 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 18:54:27,222 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 18:54:27,391 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 18:54:27,392 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 18:54:27,401 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 18:54:27,425 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 18:54:33,924 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 18:54:33,931 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 18:54:49,108 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 18:54:49,114 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 18:54:49,125 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 1289
+2024-05-03 18:55:01,749 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 18:55:01,750 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 18:55:05,585 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 18:55:05,585 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 18:56:03,371 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 18:56:03,378 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 18:56:03,380 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 18:56:03,383 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 18:56:03,395 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 18:56:29,635 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 18:56:29,641 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 18:56:44,107 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 18:56:44,108 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 18:56:44,110 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 1289
+2024-05-03 18:59:10,257 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 18:59:10,257 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 18:59:20,970 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 18:59:20,972 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 19:00:06,628 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:00:06,636 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 19:00:06,642 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:00:06,648 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 19:00:06,669 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:00:12,410 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:00:12,430 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:00:15,448 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 289
+2024-05-03 19:01:46,136 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:01:46,137 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 19:02:00,587 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:02:00,595 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 19:02:00,604 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:02:00,609 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 19:02:00,636 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:02:07,783 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:03:40,055 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:03:40,055 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 19:04:03,091 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:04:03,098 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 19:04:03,105 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:04:03,109 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 19:04:03,133 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:04:11,478 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:04:11,493 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:04:11,495 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 833
+2024-05-03 19:04:41,799 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:04:41,799 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 19:04:52,424 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:04:52,425 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 19:06:05,945 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:06:05,952 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 19:06:05,958 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:06:05,962 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 19:06:05,984 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:06:12,668 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:06:12,684 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:06:12,688 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 422 833
+2024-05-03 19:07:20,393 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:07:20,393 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 19:07:36,012 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:07:36,012 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 19:08:30,176 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:08:30,184 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 19:08:30,192 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:08:30,197 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 19:08:30,218 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:08:37,978 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:13:31,419 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:13:31,419 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 19:14:24,157 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:14:24,162 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/emotions HTTP/1.1" 200 589
+2024-05-03 19:14:24,164 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-03 19:14:24,173 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "DELETE /happyface/v2/scei/emotions HTTP/1.1" 200 1
+2024-05-03 19:14:24,187 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:14:30,738 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:14:30,753 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:14:45,978 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/init-consultancy HTTP/1.1" 200 1453
+2024-05-03 19:32:15,253 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:32:36,957 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:32:36,960 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:32:43,743 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1342
+2024-05-03 19:32:43,746 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:33:19,210 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 1298
+2024-05-03 19:42:17,678 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:42:17,679 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 19:42:21,183 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:42:21,184 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 19:42:46,181 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:42:46,181 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-03 19:43:54,457 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 19:43:54,458 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-03 19:44:12,119 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:44:18,399 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:44:18,407 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:44:22,942 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1342
+2024-05-03 19:44:22,945 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:44:55,723 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 2788
+2024-05-03 19:45:54,775 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:46:01,513 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:46:01,515 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:46:07,898 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1342
+2024-05-03 19:46:07,901 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:46:25,157 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 825
+2024-05-03 19:46:57,083 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:47:02,316 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:47:02,319 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:47:06,587 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1342
+2024-05-03 19:47:06,590 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:47:11,531 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 261
+2024-05-03 19:47:28,022 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:47:35,391 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 664
+2024-05-03 19:47:35,394 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:47:46,490 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1379
+2024-05-03 19:47:46,498 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:47:49,318 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 500 21
+2024-05-03 19:48:53,625 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:48:55,605 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 500 21
+2024-05-03 19:48:55,725 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:48:55,729 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 422 173
+2024-05-03 19:48:55,732 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:48:55,734 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 422 180
+2024-05-03 19:49:33,288 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:49:34,681 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 500 21
+2024-05-03 19:49:34,693 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:49:34,696 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 422 173
+2024-05-03 19:49:34,699 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 19:49:34,702 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 422 180
+2024-05-03 21:33:40,739 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:33:43,216 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 500 21
+2024-05-03 21:33:43,402 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:33:43,455 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 422 173
+2024-05-03 21:33:43,458 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:33:43,464 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 422 180
+2024-05-03 21:42:02,379 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:42:04,318 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 500 21
+2024-05-03 21:42:04,332 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:42:04,335 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 422 173
+2024-05-03 21:42:04,337 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:42:04,339 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 422 180
+2024-05-03 21:43:45,699 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:45:16,559 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 500 21
+2024-05-03 21:45:16,584 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:45:16,589 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 422 173
+2024-05-03 21:45:16,590 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:45:16,595 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 422 180
+2024-05-03 21:47:34,627 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:48:21,237 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 500 21
+2024-05-03 21:48:21,263 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:48:21,269 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 422 173
+2024-05-03 21:48:21,271 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:48:21,275 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 422 180
+2024-05-03 21:51:47,713 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:51:50,918 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 500 21
+2024-05-03 21:51:50,932 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:51:50,936 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 422 173
+2024-05-03 21:51:50,937 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:51:50,939 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 422 180
+2024-05-03 21:58:58,937 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:59:01,308 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 500 21
+2024-05-03 21:59:01,341 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:59:01,347 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 422 173
+2024-05-03 21:59:01,350 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-03 21:59:01,356 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 422 180
+2024-05-03 22:42:57,119 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-03 22:42:57,121 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 10:17:20,734 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 10:17:20,755 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 10:19:21,230 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:19:28,191 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 10:19:28,198 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:19:33,399 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1462
+2024-05-04 10:19:33,401 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:20:11,259 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 835
+2024-05-04 10:21:04,031 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:21:07,821 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 10:21:07,823 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:21:12,436 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1462
+2024-05-04 10:21:12,441 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:21:22,370 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 595
+2024-05-04 10:23:20,473 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:23:30,232 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 10:23:30,234 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:23:35,721 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1462
+2024-05-04 10:23:35,724 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:23:59,368 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 1352
+2024-05-04 10:27:03,275 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 10:27:03,276 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 10:27:11,315 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 10:27:11,315 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 10:27:20,075 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:27:23,973 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 10:27:23,983 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:27:28,776 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-04 10:27:28,779 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:27:34,832 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1693
+2024-05-04 10:27:34,836 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:28:14,882 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 500 21
+2024-05-04 10:36:37,480 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:36:42,980 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 10:36:42,984 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:36:46,847 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-04 10:36:46,850 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:36:51,338 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1693
+2024-05-04 10:36:51,343 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:37:06,915 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 500 21
+2024-05-04 10:45:49,875 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:45:57,320 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 10:45:57,323 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:46:02,455 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 860
+2024-05-04 10:46:02,457 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:46:07,768 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1599
+2024-05-04 10:46:07,770 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:46:58,993 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 1444
+2024-05-04 10:47:51,148 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:47:54,682 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 10:47:54,685 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:47:58,574 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-04 10:47:58,576 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:48:05,140 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1693
+2024-05-04 10:48:05,142 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:48:24,134 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 1825
+2024-05-04 10:52:37,047 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:52:43,199 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 10:52:43,209 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:52:47,069 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-04 10:52:47,073 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:52:51,650 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1693
+2024-05-04 10:52:51,657 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 10:52:55,597 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 252
+2024-05-04 11:07:45,557 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:07:50,464 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 11:07:50,469 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:07:54,203 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-04 11:07:54,209 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:08:01,898 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1693
+2024-05-04 11:08:01,904 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:08:23,718 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 747
+2024-05-04 11:14:14,292 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:14:18,848 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 11:14:18,851 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:14:23,287 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-04 11:14:23,290 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:14:27,647 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1693
+2024-05-04 11:14:27,649 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:16:39,256 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 120
+2024-05-04 11:17:06,905 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:17:10,950 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 11:17:10,953 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:17:14,482 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-04 11:17:14,486 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:17:18,751 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1693
+2024-05-04 11:17:18,753 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:17:28,402 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 1396
+2024-05-04 11:18:47,791 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:18:51,609 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 11:18:51,612 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:18:56,225 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-04 11:18:56,226 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:19:02,179 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1693
+2024-05-04 11:19:02,181 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 11:20:19,872 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 1444
+2024-05-04 13:09:29,343 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:09:29,347 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 13:09:35,036 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:09:35,036 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 13:11:52,116 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-04 13:11:58,228 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/inquiry HTTP/1.1" 500 21
+2024-05-04 13:12:50,030 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-04 13:12:57,516 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/inquiry HTTP/1.1" 200 763
+2024-05-04 13:13:42,711 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-04 13:13:45,915 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/inquiry HTTP/1.1" 200 410
+2024-05-04 13:54:46,598 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:54:46,599 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 13:54:52,211 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:54:52,212 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 13:55:35,964 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:55:35,965 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 13:55:40,207 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:55:40,208 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 13:56:04,360 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:56:04,360 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 13:56:08,560 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:56:08,560 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 13:59:47,150 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:59:47,150 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 13:59:52,171 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 13:59:52,171 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 18:50:21,406 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 18:50:21,411 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 18:50:26,252 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 18:50:26,252 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 18:54:55,631 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 18:54:55,632 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 18:55:00,434 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 18:55:00,435 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 18:56:30,054 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 18:56:30,055 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 18:56:35,521 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 18:56:35,521 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 19:02:33,296 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 19:02:33,296 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 19:02:38,693 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 19:02:38,694 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 19:06:26,314 - happy_face_logger - INFO - [DbHelper] Disconnected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 19:06:26,314 - happy_face_logger - INFO - [Main] App disabled successfully
+2024-05-04 19:06:34,524 - happy_face_logger - INFO - [DbHelper] Connected with the MongoDB: Database(MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True), 'happy_face') successfully
+2024-05-04 19:06:34,524 - happy_face_logger - INFO - [Main] App initialized successfully
+2024-05-04 19:06:41,795 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5004
+2024-05-04 19:06:49,008 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5004 "POST /happyface/v2/scei/inquiry HTTP/1.1" 200 584
+2024-05-04 19:13:33,609 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 19:13:38,432 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 646
+2024-05-04 19:13:38,439 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 19:13:49,269 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/summary HTTP/1.1" 200 866
+2024-05-04 19:13:49,272 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 19:13:58,627 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/recommendation HTTP/1.1" 200 1693
+2024-05-04 19:13:58,630 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): 127.0.0.1:5003
+2024-05-04 19:14:26,268 - urllib3.connectionpool - DEBUG - http://127.0.0.1:5003 "POST /happyface/v2/emotionistant/query-consultancy HTTP/1.1" 200 643

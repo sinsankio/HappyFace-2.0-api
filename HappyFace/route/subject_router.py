@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Request, HTTPException, status, Query, Body
 
-from entity.emotion import Emotion
-from entity.models import Subject, Consultancy, Message, AuthSubject, SubjectRememberMe
+from entity.emotion import EmotionExpression
+from entity.models import Subject, EmotionistantConsultancy, Message, AuthSubject, SubjectRememberMe, \
+    SpecialConsiderationRequest
 
 router = APIRouter()
 
@@ -57,13 +58,14 @@ async def update_subject_with_credentials(request: Request, subject: AuthSubject
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
 
 
+# to be updated: Done
 @router.post("/emotions", response_description="emotion engagement retrieval", status_code=status.HTTP_200_OK)
 async def fetch_emotion_engagement(request: Request, subject: AuthSubject = Body(...),
                                    hours: int = Query(None, description="hours before"),
                                    weeks: int = Query(None, description="weeks before"),
                                    months: int = Query(None, description="months before"),
                                    years: int = Query(None, description="years before"),
-                                   emotion: str = Query(None, description="based emotion")) -> dict | float | None:
+                                   emotion: str = Query(None, description="based emotion")) -> dict | float:
     db_helper = request.app.db_helper
     auth_service = request.app.auth_service
     subject_service = request.app.subject_service
@@ -75,8 +77,9 @@ async def fetch_emotion_engagement(request: Request, subject: AuthSubject = Body
         if emotion:
             try:
                 emotion = emotion.upper()
-                emotion = Emotion[emotion].value
-                emotional_engagement = subject_service.retrieve_emotion_engagement(db_helper, org_id, sub_id, hours=hours,
+                emotion = EmotionExpression[emotion].value
+                emotional_engagement = subject_service.retrieve_emotion_engagement(db_helper, org_id, sub_id,
+                                                                                   hours=hours,
                                                                                    weeks=weeks, months=months,
                                                                                    years=years,
                                                                                    emotion=emotion)
@@ -94,8 +97,9 @@ async def fetch_emotion_engagement(request: Request, subject: AuthSubject = Body
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
 
 
+# to be updated: Done
 @router.post("/consultation", response_description="assistant consultation retrieval", status_code=status.HTTP_200_OK,
-             response_model=Consultancy)
+             response_model=EmotionistantConsultancy)
 async def fetch_consultancy(request: Request, subject: AuthSubject = Body(...)) -> dict:
     db_helper = request.app.db_helper
     auth_service = request.app.auth_service
@@ -110,8 +114,10 @@ async def fetch_consultancy(request: Request, subject: AuthSubject = Body(...)) 
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
 
 
+# to be updated: Done
 @router.post("/consultation/chat", response_description="chat with assistant", status_code=status.HTTP_200_OK)
-async def chat_with_assistant(request: Request, subject: AuthSubject = Body(...), message: Message = Body(...)) -> dict:
+async def chat_with_assistant(request: Request, subject: AuthSubject = Body(...),
+                              message: Message = Body(...)) -> dict:
     db_helper = request.app.db_helper
     auth_service = request.app.auth_service
     subject_service = request.app.subject_service
@@ -125,6 +131,28 @@ async def chat_with_assistant(request: Request, subject: AuthSubject = Body(...)
                                                                              auth_organization, auth_subject, message):
             return conversation
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="chat with assistant failed")
+    raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
+
+
+@router.post("/scr", response_description="request a special consideration", status_code=status.HTTP_200_OK)
+async def request_special_consideration(request: Request, subject: AuthSubject = Body(...),
+                                        special_consideration_request: SpecialConsiderationRequest = Body(
+                                            ...)) -> dict:
+    db_helper = request.app.db_helper
+    auth_service = request.app.auth_service
+    subject_service = request.app.subject_service
+
+    if auth_org_subject := auth_service.auth_subject(db_helper, subject_service, subject):
+        auth_organization = auth_org_subject["auth_organization"]
+        auth_subject = auth_org_subject["auth_subject"]
+
+        if analysis := subject_service.create_special_consideration_request(
+                special_consideration_request.message,
+                auth_organization["orgKey"],
+                auth_subject["_id"]
+        ):
+            return analysis
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="special consideration request failed")
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
 
 

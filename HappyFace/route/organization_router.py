@@ -1,6 +1,10 @@
 from fastapi import APIRouter, Body, Request, HTTPException, status, Query
 
-from entity.models import Organization, Subject, WorkEmotionEntry, AuthOrganization, BasicRememberMe
+from entity.models import (
+    Organization, Subject, FacialWorkEmotionEntry, AuthOrganization, BasicRememberMe, SpecialConsiderationRequestEntry,
+    SpecialConsiderationResponseEntry
+)
+from helper.api.organization_api_helper import OrganizationApiHelper
 
 router = APIRouter()
 
@@ -26,7 +30,8 @@ async def register_subjects(request: Request, organization: AuthOrganization = B
     organization_service = request.app.organization_service
 
     if auth_organization := auth_service.auth_organization(db_helper, organization_service, organization):
-        if updated_subjects := subject_service.register_all(db_helper, organization_service, auth_organization, subjects):
+        if updated_subjects := subject_service.register_all(db_helper, organization_service, auth_organization,
+                                                            subjects):
             return updated_subjects
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="subject(s) registration failed")
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
@@ -68,7 +73,8 @@ async def update_organization(request: Request, organization: AuthOrganization =
     organization_service = request.app.organization_service
 
     if auth_organization := auth_service.auth_organization(db_helper, organization_service, organization):
-        if updated_organization := organization_service.update(db_helper, auth_organization, new_organization, hashing=False):
+        if updated_organization := organization_service.update(db_helper, auth_organization, new_organization,
+                                                               hashing=False):
             return updated_organization
         raise HTTPException(status_code=status.HTTP_304_NOT_MODIFIED, detail="organization modification failed")
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
@@ -119,6 +125,7 @@ async def delete_subject(request: Request, organization: AuthOrganization = Body
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
 
 
+# to be updated (2): Done
 @router.post("/emotions", response_description="emotion engagement retrieval", status_code=status.HTTP_200_OK)
 async def fetch_emotion_engagement(request: Request, organization: AuthOrganization = Body(...),
                                    hours: int = Query(None, description="hours before"),
@@ -139,32 +146,78 @@ async def fetch_emotion_engagement(request: Request, organization: AuthOrganizat
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
 
 
+# to be updated (1): Done
 @router.put("/emotions", response_description="work emotion entry submission", status_code=status.HTTP_200_OK,
             response_model=Organization)
 async def upload_work_emotion_entries(request: Request, org_key=Query(..., description="organization key"),
-                                      work_emotion_entries: list[WorkEmotionEntry] = Body(...)):
+                                      facial_work_emotion_entries: list[FacialWorkEmotionEntry] = Body(...)):
     db_helper = request.app.db_helper
     organization_service = request.app.organization_service
 
-    if organization := organization_service.insert_work_emotion_entries(db_helper, org_key, work_emotion_entries):
+    if organization := organization_service.insert_facial_work_emotion_entries(
+            db_helper,
+            org_key,
+            facial_work_emotion_entries
+    ):
+        if sentimental_emotions := OrganizationApiHelper.get_organizational_sentimental_emotions(org_key):
+            OrganizationApiHelper.delete_organizational_sentimental_emotions(org_key)
+            if organization := organization_service.insert_sentimental_work_emotion_entries(
+                    db_helper,
+                    org_key,
+                    sentimental_emotions
+            ):
+                return organization
         return organization
     raise HTTPException(status_code=status.HTTP_304_NOT_MODIFIED, detail="work emotion entry updation failed")
 
 
+# to be updated (3): Done
 @router.post("/consultation", response_description="setup consultations on work entry submission",
              status_code=status.HTTP_200_OK)
-async def setup_consultancy_services_on_work_emotion_entries(request: Request,
-                                                             org_key=Query(..., description="organization key"),
-                                                             work_emotion_entries: list[WorkEmotionEntry] = Body(
-                                                                 ...)) -> int:
+async def setup_consultancies_on_latest_work_emotion_entries(request: Request,
+                                                             org_key=Query(..., description="organization key")) -> int:
     db_helper = request.app.db_helper
     organization_service = request.app.organization_service
 
-    if organization_service.init_consultancy_services_on_work_emotion_entry_submission(
-            db_helper, org_key, work_emotion_entries
-    ):
+    if organization_service.init_consultancy_services_on_latest_work_emotion_entries(db_helper, org_key):
         return status.HTTP_200_OK
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="consultation setup failed")
+
+
+@router.post("/scr",
+             response_description="fetch unresponded special consideration requests",
+             status_code=status.HTTP_200_OK,
+             response_model=list[SpecialConsiderationRequestEntry])
+async def fetch_special_consideration_requests(request: Request, organization: AuthOrganization = Body(...)) -> list:
+    db_helper = request.app.db_helper
+    auth_service = request.app.auth_service
+    organization_service = request.app.organization_service
+
+    if auth_organization := auth_service.auth_organization(db_helper, organization_service, organization):
+        return organization_service.retrieve_unresponded_special_consideration_requests(auth_organization)
+    raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
+
+
+@router.post("/scr-response",
+             response_description="make responses for special consideration requests",
+             status_code=status.HTTP_200_OK,
+             response_model=Organization)
+async def response_for_special_consideration_request(request: Request, organization: AuthOrganization = Body(...),
+                                                     scr_responses: list[SpecialConsiderationResponseEntry] = Body(
+                                                         ...)) -> dict:
+    db_helper = request.app.db_helper
+    auth_service = request.app.auth_service
+    organization_service = request.app.organization_service
+
+    if auth_organization := auth_service.auth_organization(db_helper, organization_service, organization):
+        if updated_organization := organization_service.write_response_for_special_consideration_requests(
+                db_helper,
+                auth_organization,
+                scr_responses
+        ):
+            return updated_organization
+        raise HTTPException(status_code=status.HTTP_304_NOT_MODIFIED, detail="special consideration response failed")
+    raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
 
 
 @router.post("/remember", response_description="organization remember me", status_code=status.HTTP_200_OK,

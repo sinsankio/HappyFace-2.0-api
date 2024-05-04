@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class Emotion(str, Enum):
+class EmotionExpression(str, Enum):
     ANGER = "anger",
     CONTEMPT = "contempt",
     DISGUST = "disgust",

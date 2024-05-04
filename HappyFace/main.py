@@ -1,4 +1,3 @@
-import openai
 import uvicorn
 from dotenv import dotenv_values
 from fastapi import FastAPI
@@ -18,7 +17,6 @@ from service.subject_service import SubjectService
 db_config = dotenv_values("config/database/mongodb.env")
 log_config = dotenv_values("config/log/default.env")
 crypto_config = dotenv_values("config/crypto/aes.env")
-chat_config = dotenv_values("config/chat/openai.env")
 
 app = FastAPI()
 
@@ -31,7 +29,6 @@ def startup_client():
     app.admin_service = AdminService()
     app.organization_service = OrganizationService()
     app.subject_service = SubjectService()
-    openai.api_key = chat_config["API_KEY"]
     app.log_helper = LogHelper(
         logger_name=log_config["LOGGER_NAME"],
         log_file_name=log_config["LOG_FILE_NAME"],
@@ -56,9 +53,9 @@ def shutdown_client():
 
 
 if __name__ == "__main__":
-    app.include_router(admin_router, tags=["admins"], prefix="/happyface/v1")
-    app.include_router(organization_router, tags=["organizations"], prefix="/happyface/v1/orgs")
-    app.include_router(subject_router, tags=["subjects"], prefix="/happyface/v1/orgs/subjects")
-    app.include_router(utility_router, tags=["utils"], prefix="/happyface/v1/utils")
+    app.include_router(admin_router, tags=["admins"], prefix="/happyface/v2")
+    app.include_router(organization_router, tags=["organizations"], prefix="/happyface/v2/orgs")
+    app.include_router(subject_router, tags=["subjects"], prefix="/happyface/v2/orgs/subjects")
+    app.include_router(utility_router, tags=["utils"], prefix="/happyface/v2/utils")
 
     uvicorn.run(app)

@@ -1,8 +1,9 @@
 import uuid
+from typing import Union
 
 from pydantic import Field, BaseModel
 
-from entity.emotion import Emotion
+from entity.emotion import EmotionExpression
 from entity.gender import Gender
 from helper.datetime.date_time_helper import DateTimeHelper
 from helper.key.random_key_helper import RandomKeyHelper
@@ -22,7 +23,7 @@ class AuthAdmin(BaseModel):
     password: str
 
 
-class Assistant(BaseModel):
+class Emotionistant(BaseModel):
     id: str = Field(default="015b8e2b-b470-44ac-8201-cf4fd12e12d3", alias="_id")
     publisher: str = Field(default="HappyFace")
     name: str = Field(default="HappyFace-Emotionistant")
@@ -67,30 +68,72 @@ class Family(BaseModel):
     monthly_cumm_income: int = Field(default=10, ge=1, alias="monthlyCummIncome")
     monthly_cumm_expenses: int = Field(default=5, ge=1, alias="monthlyCummExpenses")
     num_occupations: int = Field(default=1, ge=1, alias="numOccupations")
-    category: str = Field(default="simplex")
+    category: str = Field(default="nuclear")
 
 
-class HrAppointment(BaseModel):
-    message: str = Field(default="This message is to inform your appointment with the HR Officer at the cabin tomorrow")
+class SpecialConsiderationRequest(BaseModel):
+    id: str = Field(default_factory=uuid.uuid4, alias="_id")
+    message: str = Field()
+    response: str | None = Field(default=None)
+    requested_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="requestedOn")
+    responded_on: str | None = Field(default=None, alias="respondedOn")
+
+
+class SpecialConsiderationRequestEntry(BaseModel):
+    subject_id: str = Field(alias="subjectId")
+    request_id: str = Field(alias="requestId")
+    subject_name: str = Field(alias="subjectName")
+    message: str = Field()
     requested_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="requestedOn")
 
 
-class WorkEmotion(BaseModel):
-    emotion: Emotion = Field(default=Emotion.HAPPY.value)
-    probability: float = Field(default=100)
+class SpecialConsiderationResponseEntry(BaseModel):
+    request_id: str = Field(alias="requestId")
+    subject_id: str = Field(alias="subjectId")
+    message: str = Field()
+    responded_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="respondedOn")
+
+
+class HumanFacialEmotion(BaseModel):
+    expression: EmotionExpression = Field(default=EmotionExpression.HAPPY.value)
+    accuracy: float = Field(default=100)
+    arousal: float = Field(le=100, ge=-100)
+    valence: float = Field(le=100, ge=-100)
     recorded_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="recordedOn")
 
 
+class HumanSentimentalEmotion(BaseModel):
+    expression: EmotionExpression = Field(default=EmotionExpression.HAPPY.value)
+    accuracy: float = Field(default=100)
+    arousal: float = Field(le=100, ge=-100)
+    valence: float = Field(le=100, ge=-100)
+    special_consideration_msg: str = Field(alias="specialConsiderationMessage")
+    recorded_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="recordedOn")
+
+
+class FacialWorkEmotionEntry(BaseModel):
+    face_snap_dir_uri: str = Field(alias="faceSnapDirURI")
+    created_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="createdOn")
+    work_emotions: list[HumanFacialEmotion] = Field(default=[], alias="workEmotions")
+
+
+class SentimentalEmotionEntry(BaseModel):
+    id: str = Field(alias="_id")
+    org_key: str = Field(alias="orgKey")
+    subject_id: str = Field(alias="subjectId")
+    last_update_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="lastUpdateOn")
+    work_emotions: list[HumanSentimentalEmotion] = Field(default=[], alias="workEmotions")
+
+
 class Message(BaseModel):
-    sender: str = Field(default="assistant")
-    receiver: str = Field(default="user")
+    sender: str = Field(default="emotionistant")
+    receiver: str = Field(default="friend")
     body: str
     sent_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="sentOn")
 
 
-class Consultancy(BaseModel):
+class EmotionistantConsultancy(BaseModel):
     id: str = Field(alias="_id")
-    expression_caused: Emotion = Field(default=Emotion.HAPPY, alias="expressionCaused")
     chat: list[Message] = Field(default=list())
     consulted_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="consultedOn")
 
@@ -110,9 +153,11 @@ class Subject(BaseModel):
     hidden_diseases: list[str] = Field(default=list(), alias="hiddenDiseases")
     family: Family | dict = Field(default=Family().model_dump())
     face_snap_dir_uri: str = Field(alias="faceSnapDirURI")
-    work_emotions: list[WorkEmotion] = Field(default=list(), alias="workEmotions")
-    consultancies: list[Consultancy] = Field(default=list())
-    hr_appointments: list[HrAppointment] = Field(default=list(), alias="hrAppointments")
+    work_emotions: list[Union[HumanSentimentalEmotion, HumanFacialEmotion]] = Field(default=list(),
+                                                                                    alias="workEmotions")
+    consultancies: list[EmotionistantConsultancy] = Field(default=list())
+    special_consideration_requests: list[SpecialConsiderationRequest] = Field(default=list(),
+                                                                              alias="specialConsiderationRequests")
     auth_key: str | None = Field(default=None, alias="authKey")
 
 
@@ -138,8 +183,9 @@ class Subscription(BaseModel):
     introduced_on: str = Field(default="2023-04-01T00:00:00.000001", alias="introducedOn")
     face_detector: FaceDetector | dict = Field(default=FaceDetector().model_dump(), alias="faceDetector")
     face_matcher: FaceMatcher | dict = Field(default=FaceMatcher().model_dump(), alias="faceMatcher")
-    emotion_recognizer: EmotionRecognizer | dict = Field(default=EmotionRecognizer().model_dump(), alias="emotionRecognizer")
-    assistant: Assistant | dict = Field(default=Assistant().model_dump())
+    emotion_recognizer: EmotionRecognizer | dict = Field(default=EmotionRecognizer().model_dump(),
+                                                         alias="emotionRecognizer")
+    assistant: Emotionistant | dict = Field(default=Emotionistant().model_dump())
     additional_features: list[str] = Field(default=list(), alias="additionalFeatures")
 
 
@@ -177,12 +223,6 @@ class AdministrativeOrganization(BaseModel):
     subjects: list[AdministrativeSubject] = Field(default=list())
     happy_engagement: float = Field(default=0, alias="happyEngagement")
     subscription: Subscription | dict = Field(default=Subscription().model_dump())
-
-
-class WorkEmotionEntry(BaseModel):
-    face_snap_dir_uri: str = Field(alias="faceSnapDirURI")
-    created_on: str = Field(alias="createdOn")
-    work_emotions: list[WorkEmotion] = Field(default=[], alias="workEmotions")
 
 
 class BasicRememberMe(BaseModel):
