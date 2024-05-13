@@ -8,7 +8,8 @@ from entity.emotion import EmotionExpression
 from entity.models import EmotionistantConsultancy
 from entity.models import Message
 from entity.models import (
-    Organization, FacialWorkEmotionEntry, AuthOrganization, BasicRememberMe, SpecialConsiderationRequestEntry
+    Organization, FacialWorkEmotionEntry, AuthOrganization, BasicRememberMe, SpecialConsiderationRequestEntry,
+    SpecialConsiderationRequest
 )
 from helper.api.subject_api_helper import SubjectApiHelper
 from helper.database.mongodb.db_helper import DbHelper
@@ -140,11 +141,14 @@ class OrganizationService:
                     subject["workEmotions"].extend(new_work_emotions)
                     for we in new_work_emotions:
                         if "specialConsiderationMessage" in we:
-                            subject["specialConsiderationRequests"].append({
-                                "message": we["specialConsiderationMessage"],
-                                "requestedOn": we["recordedOn"],
-                                "response": None
-                            })
+                            subject["specialConsiderationRequests"].append(
+                                jsonable_encoder(
+                                    SpecialConsiderationRequest(
+                                        message=we["specialConsiderationMessage"],
+                                        requestedOn=we["recordedOn"]
+                                    )
+                                )
+                            )
 
             if organization := self.update(db_helper, old_organization, organization, hashing=False):
                 return organization
@@ -228,7 +232,8 @@ class OrganizationService:
                         subjectId=subject["_id"],
                         requestId=request["_id"],
                         subjectName=subject["name"],
-                        message=request["message"]
+                        message=request["message"],
+                        requestedOn=request["requestedOn"]
                     )
                     unresponded_requests.append(special_consideration_request_entry)
         return unresponded_requests

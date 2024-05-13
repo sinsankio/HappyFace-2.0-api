@@ -84,7 +84,7 @@ class SpecialConsiderationRequestEntry(BaseModel):
     request_id: str = Field(alias="requestId")
     subject_name: str = Field(alias="subjectName")
     message: str = Field()
-    requested_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="requestedOn")
+    requested_on: str = Field(alias="requestedOn")
 
 
 class SpecialConsiderationResponseEntry(BaseModel):
@@ -133,7 +133,7 @@ class Message(BaseModel):
 
 
 class EmotionistantConsultancy(BaseModel):
-    id: str = Field(alias="_id")
+    id: str = Field(default_factory=uuid.uuid4, alias="_id")
     chat: list[Message] = Field(default=list())
     consulted_on: str = Field(default_factory=DateTimeHelper.get_current_iso_datetime, alias="consultedOn")
 

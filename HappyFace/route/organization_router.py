@@ -67,7 +67,7 @@ async def fetch_subjects(request: Request, organization: AuthOrganization = Body
 @router.put("", response_description="organization modification", status_code=status.HTTP_200_OK,
             response_model=Organization)
 async def update_organization(request: Request, organization: AuthOrganization = Body(...),
-                              new_organization: Organization = Body(...)) -> dict:
+                              new_organization: Organization = Body(..., alias="newOrganization")) -> dict:
     db_helper = request.app.db_helper
     auth_service = request.app.auth_service
     organization_service = request.app.organization_service
@@ -83,7 +83,8 @@ async def update_organization(request: Request, organization: AuthOrganization =
 @router.put("/credentials", response_description="organization credential modification", status_code=status.HTTP_200_OK,
             response_model=Organization)
 async def update_organization_with_credentials(request: Request, organization: AuthOrganization = Body(...),
-                                               new_organization: Organization = Body(...)) -> dict:
+                                               new_organization: Organization = Body(...,
+                                                                                     alias="newOrganization")) -> dict:
     db_helper = request.app.db_helper
     auth_service = request.app.auth_service
     organization_service = request.app.organization_service
@@ -110,7 +111,7 @@ async def delete_organization(request: Request, organization: AuthOrganization =
 
 @router.delete("/subjects", response_description="subject deletion", status_code=status.HTTP_200_OK)
 async def delete_subject(request: Request, organization: AuthOrganization = Body(...),
-                         sub_id: str = Query(..., description="subject id")) -> int:
+                         sub_id: str = Query(..., alias="subId", description="subject id")) -> int:
     db_helper = request.app.db_helper
     crypto_helper = request.app.crypto_helper
     auth_service = request.app.auth_service
@@ -125,7 +126,6 @@ async def delete_subject(request: Request, organization: AuthOrganization = Body
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
 
 
-# to be updated (2): Done
 @router.post("/emotions", response_description="emotion engagement retrieval", status_code=status.HTTP_200_OK)
 async def fetch_emotion_engagement(request: Request, organization: AuthOrganization = Body(...),
                                    hours: int = Query(None, description="hours before"),
@@ -146,7 +146,6 @@ async def fetch_emotion_engagement(request: Request, organization: AuthOrganizat
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="unauthorized request")
 
 
-# to be updated (1): Done
 @router.put("/emotions", response_description="work emotion entry submission", status_code=status.HTTP_200_OK,
             response_model=Organization)
 async def upload_work_emotion_entries(request: Request, org_key=Query(..., description="organization key"),
@@ -171,7 +170,6 @@ async def upload_work_emotion_entries(request: Request, org_key=Query(..., descr
     raise HTTPException(status_code=status.HTTP_304_NOT_MODIFIED, detail="work emotion entry updation failed")
 
 
-# to be updated (3): Done
 @router.post("/consultation", response_description="setup consultations on work entry submission",
              status_code=status.HTTP_200_OK)
 async def setup_consultancies_on_latest_work_emotion_entries(request: Request,
@@ -204,7 +202,7 @@ async def fetch_special_consideration_requests(request: Request, organization: A
              response_model=Organization)
 async def response_for_special_consideration_request(request: Request, organization: AuthOrganization = Body(...),
                                                      scr_responses: list[SpecialConsiderationResponseEntry] = Body(
-                                                         ...)) -> dict:
+                                                         ..., alias="scrResponses")) -> dict:
     db_helper = request.app.db_helper
     auth_service = request.app.auth_service
     organization_service = request.app.organization_service

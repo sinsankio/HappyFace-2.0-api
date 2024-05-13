@@ -4,7 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from varname import nameof
 
 from entity.emotion import EmotionExpression
-from entity.models import Subject, Message, AuthSubject, SubjectRememberMe
+from entity.models import Subject, Message, AuthSubject, SubjectRememberMe, EmotionistantConsultancy
 from helper.api.subject_api_helper import SubjectApiHelper
 from helper.database.mongodb.db_helper import DbHelper
 from helper.datetime.date_time_helper import DateTimeHelper
@@ -155,10 +155,23 @@ class SubjectService:
             ):
                 latest_consultancy["chat"].append(message)
                 latest_consultancy["chat"].append(Message(body=query_consultancy["emotionistant"]))
-
-                if _ := SubjectService.update(db_helper, organization_service, organization, old_subject, subject,
-                                              hashing=False):
-                    return SubjectService.retrieve_consultancy(subject)
+        else:
+            if query_consultancy := SubjectApiHelper.get_query_consultancy(
+                    message.body,
+                    organization["name"],
+                    subject["_id"],
+                    profile_recommendation,
+                    []
+            ):
+                subject["consultancies"].append(
+                    EmotionistantConsultancy(
+                        chat=[message, Message(body=query_consultancy["emotionistant"])]
+                    )
+                )
+                subject = jsonable_encoder(subject)
+        if _ := SubjectService.update(db_helper, organization_service, organization, old_subject, subject,
+                                      hashing=False):
+            return SubjectService.retrieve_consultancy(subject)
 
     @staticmethod
     def get_profile_summary(profile: dict) -> str | None:
@@ -266,6 +279,18 @@ class SubjectService:
     @staticmethod
     def create_special_consideration_request(request_message: str, org_key: str, subject_id: str) -> dict | None:
         return SubjectApiHelper.request_for_special_consideration_inquiry(request_message, org_key, subject_id)
+
+    @staticmethod
+    def fetch_responded_special_consideration_requests(subject: dict, before_months: int = 1):
+        responded_requests = []
+        subtracted_iso_datetime = DateTimeHelper.subtract_iso_datetime(months=before_months)
+        subtracted_iso_datetime = DateTimeHelper.str_to_iso_datetime(subtracted_iso_datetime)
+        for request in subject["specialConsiderationRequests"]:
+            if request["response"] and DateTimeHelper.str_to_iso_datetime(
+                    request["respondedOn"]) >= subtracted_iso_datetime:
+                responded_requests.append(request)
+        responded_requests.sort(key=lambda r: r["respondedOn"], reverse=True)
+        return responded_requests
 
     @staticmethod
     def remember_me(db_helper: DbHelper, subject_remember_me: SubjectRememberMe) -> dict | None:
